@@ -43,6 +43,11 @@ variable "aks_service_principal_client_secret" {
   default     = "A4b8Q~s-Ep3Dr6JTMD_35t-IHPYL0LG9ZAynacyE"
 }
 
+variable "aks_enable_rbac" {
+  description = "Enable RBAC on the AKS cluster. Defaults to false."
+  default     = "false"
+}
+
 variable "tags" {
   type = map(string)
 

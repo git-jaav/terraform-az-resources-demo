@@ -29,7 +29,7 @@ resource "azurerm_kubernetes_cluster" "example" {
   resource_group_name = "${var.resource_group}"
   dns_prefix          = "my-kube-${var.suffix}"
 
-  kubernetes_version = "1.21.9"
+  kubernetes_version = "1.22.6"
 
   default_node_pool {
     name       = "default"
@@ -38,15 +38,18 @@ resource "azurerm_kubernetes_cluster" "example" {
     vnet_subnet_id  =  data.azurerm_subnet.kubesubnet.id
   }
 
-  service_principal {
+  // Para pruebas integrales con AD. Ex: uso de AGIC (Para su uso, desactivar "identity")
+  /*service_principal {
     client_id     = var.aks_service_principal_app_id
     client_secret = var.aks_service_principal_client_secret
+  }*/
+
+  // Para pruebas por defecto (requerido si se desactiva "service_principal")
+  identity {
+    type = "SystemAssigned"
   }
 
-
-  /*identity {
-    type = "SystemAssigned"
-  }*/
+  role_based_access_control_enabled = var.aks_enable_rbac
 
   /*role_based_access_control {
     enabled = var.aks_enable_rbac
