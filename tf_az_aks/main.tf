@@ -29,11 +29,11 @@ resource "azurerm_kubernetes_cluster" "example" {
   resource_group_name = "${var.resource_group}"
   dns_prefix          = "my-kube-${var.suffix}"
 
-  kubernetes_version = "1.22.6"
+  //kubernetes_version = "1.22.6"
 
   default_node_pool {
     name       = "default"
-    node_count = 1
+    node_count = 2
     vm_size    = "Standard_DS2_v2"    
     vnet_subnet_id  =  data.azurerm_subnet.kubesubnet.id
   }
