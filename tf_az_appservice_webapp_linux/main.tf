@@ -7,7 +7,7 @@ resource "azurerm_service_plan" "my_demo" {
   resource_group_name = var.resource_group
   location            = var.location
   os_type             = "Linux"
-  sku_name            = "B1"
+  sku_name            = "F1"
 }
 
 resource "azurerm_linux_web_app" "my_demo" {
@@ -30,7 +30,9 @@ resource "azurerm_linux_web_app" "my_demo" {
     //linux_fx_version = "DOCKER|appsvcsample/static-site:latest"
     // Try after create, the config:
     //az webapp config set --name <webapp-name> --resource-group <resource-group-name> --linux-fx-version "DOCKER|<yourACRRegistryName.azurecr.io/yourimage:yourtag>"
-    always_on        = "true"
+    //docker-custom-image-name
+    //az webapp config container set --name <app-name> --resource-group <group-name> --docker-custom-image-name <docker-hub-repo>/<image>
+    always_on        = "false"
   }
   identity {
     type = "SystemAssigned"
