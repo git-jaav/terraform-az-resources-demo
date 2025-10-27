@@ -12,3 +12,8 @@ variable "resource_group" {
   description = "resource group"
   default = "rg-demo-dev"
 }
+
+variable "subscription_id" {
+  description = "subscription id"
+  //default = "value"
+}

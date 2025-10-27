@@ -1,5 +1,7 @@
 provider "azurerm" {
   features {}
+  //Si es necesario agregar "subscription_id":
+  subscription_id = var.subscription_id
 }
 
 resource "azurerm_service_plan" "my_demo" {
